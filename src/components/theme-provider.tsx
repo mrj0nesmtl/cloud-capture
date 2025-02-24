@@ -2,9 +2,23 @@
 
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
-import { type ThemeProviderProps } from "next-themes"
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+interface ThemeProviderProps {
+  children: React.ReactNode
+  attribute?: string
+  defaultTheme?: string
+  enableSystem?: boolean
+  storageKey?: string
+}
+
+export function ThemeProvider({ 
+  children,
+  attribute = "class",
+  defaultTheme = "system",
+  enableSystem = true,
+  storageKey = "theme",
+  ...props 
+}: ThemeProviderProps) {
   const [mounted, setMounted] = React.useState(false)
 
   // Only run the effect on client side
@@ -18,7 +32,13 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   }
 
   return (
-    <NextThemesProvider {...props}>
+    <NextThemesProvider
+      attribute={attribute}
+      defaultTheme={defaultTheme}
+      enableSystem={enableSystem}
+      storageKey={storageKey}
+      {...props}
+    >
       {children}
     </NextThemesProvider>
   )
