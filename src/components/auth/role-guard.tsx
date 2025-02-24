@@ -14,12 +14,12 @@ export function RoleGuard({ children, allowedRoles }: RoleGuardProps) {
   const { user } = useAuth()
   
   useEffect(() => {
-    if (!user || !allowedRoles.includes(user.role)) {
+    if (!user?.role || !allowedRoles.includes(user.role)) {
       router.push('/dashboard')
     }
   }, [user, allowedRoles, router])
 
-  if (!user || !allowedRoles.includes(user.role)) {
+  if (!user?.role || !allowedRoles.includes(user.role)) {
     return null
   }
 
