@@ -95,7 +95,6 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
           storageKey="cloud-burst-theme"
         >
           <div className="relative flex min-h-screen flex-col">
