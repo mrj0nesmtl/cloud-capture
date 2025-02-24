@@ -1,6 +1,33 @@
-import { Camera, Check, ChevronDown, ChevronLeft, ChevronRight, Command, CreditCard, File, FileText, HelpCircle, Image, Laptop, Loader2, LucideProps, Moon, MoreVertical, Pizza, Plus, Settings, SunMedium, Trash, Twitter, User, X, type Icon as LucideIcon } from "lucide-react"
+import { 
+  Camera, 
+  Check, 
+  ChevronDown, 
+  ChevronLeft, 
+  ChevronRight, 
+  Command, 
+  CreditCard, 
+  File, 
+  FileText, 
+  Facebook,
+  Instagram,
+  Linkedin,
+  HelpCircle, 
+  Image, 
+  Laptop, 
+  Loader2, 
+  LucideProps,
+  Moon, 
+  MoreVertical, 
+  Plus, 
+  Settings, 
+  SunMedium, 
+  Trash, 
+  Twitter, 
+  User, 
+  X 
+} from "lucide-react"
 
-export type Icon = LucideIcon
+export type Icon = typeof Command
 
 export const Icons = {
   logo: Command,
@@ -24,4 +51,9 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
+  // Social icons
+  facebook: Facebook,
+  instagram: Instagram,
+  linkedin: Linkedin,
+  twitter: Twitter,
 } as const 
