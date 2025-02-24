@@ -58,7 +58,13 @@ export default async function SettingsPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {profile && <ProfileForm profile={profile} />}
+              <ProfileForm 
+                user={session.user}
+                className="space-y-6"
+                onSuccess={() => {
+                  // Optionally refresh the page or show a success message
+                }}
+              />
             </CardContent>
           </Card>
         </TabsContent>
