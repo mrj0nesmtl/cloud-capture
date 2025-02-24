@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server-config'
 
 export const metadata: Metadata = {
   title: 'Events | Cloud Burst',
