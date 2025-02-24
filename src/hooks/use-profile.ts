@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { createClient } from '@/lib/supabase/client-config'
+import { createClient } from '@/lib/supabase/client'
 import type { Database } from '@/types/supabase'
 
 type Profile = Database['public']['Tables']['profiles']['Row']
