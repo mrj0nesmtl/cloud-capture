@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { useUpdateProfile } from '@/hooks/use-update-profile'
-import type { Profile } from '@/types/supabase'
+import type { User } from '@supabase/supabase-js'
 
 const profileFormSchema = z.object({
   username: z.string()
@@ -33,20 +33,21 @@ const profileFormSchema = z.object({
 type ProfileFormValues = z.infer<typeof profileFormSchema>
 
 interface ProfileFormProps {
-  profile: Profile
+  user: User
+  className?: string
   onSuccess?: () => void
 }
 
-export function ProfileForm({ profile, onSuccess }: ProfileFormProps) {
+export function ProfileForm({ user, className, onSuccess }: ProfileFormProps) {
   const { toast } = useToast()
-  const { mutate: updateProfile, isPending } = useUpdateProfile(profile.id)
+  const { mutate: updateProfile, isPending } = useUpdateProfile(user.id)
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues: {
-      username: profile.username || '',
-      full_name: profile.full_name || '',
-      avatar_url: profile.avatar_url || '',
+      username: '',
+      full_name: '',
+      avatar_url: '',
     },
   })
 
@@ -71,7 +72,7 @@ export function ProfileForm({ profile, onSuccess }: ProfileFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className={className}>
         <FormField
           control={form.control}
           name="username"
@@ -123,7 +124,7 @@ export function ProfileForm({ profile, onSuccess }: ProfileFormProps) {
           )}
         />
 
-        <Button type="submit" disabled={isPending}>
+        <Button type="submit" disabled={isPending} className="mt-6">
           {isPending ? 'Saving...' : 'Save Changes'}
         </Button>
       </form>
