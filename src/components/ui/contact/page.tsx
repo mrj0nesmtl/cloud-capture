@@ -1,3 +1,5 @@
+import { Facebook, Instagram, ExternalLink, Linkedin } from "lucide-react"
+
 export default function ContactPage() {
   return (
     <div className="space-y-6">
